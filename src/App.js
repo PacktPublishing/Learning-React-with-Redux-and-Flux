@@ -4,7 +4,7 @@ import "./App.css";
 
 class App extends Component {
   render() {
-    return <Home />;
+    return <Home message="Hot reloading is great!" />;
   }
 }
 
