@@ -1,23 +1,20 @@
-export function createStore(initialState) {
-  let currentState = initialState;
-  const listeners = [];
+import { createStore } from "redux";
 
-  const getState = () => currentState;
+const initialState = {
+  n: 0
+};
 
-  const dispatch = action => {
-    currentState = action(currentState);
-    listeners.forEach(l => l(currentState));
-  };
-
-  const subscribe = callback => {
-    listeners.push(callback);
-  };
-
-  const unsubscribe = callback => {
-    if (listeners.includes(callback)) {
-      listeners.splice(listeners.indexOf(callback));
-    }
-  };
-
-  return { getState, dispatch, subscribe, unsubscribe };
+function inc(state, action) {
+  return { ...state, n: state.n + action.n };
 }
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case "INCREMENT":
+      return inc(state, action);
+    default:
+      return state;
+  }
+}
+
+export default createStore(reducer);

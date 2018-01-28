@@ -1,15 +1,21 @@
 import React, { Component } from "react";
-import { inc as increment } from "./actions";
-import connect from "./connect";
+import { connect } from "react-redux";
+import { increment } from "./actions";
 
-export function Counter({ step, n, send }) {
+export function Counter({ n, inc, dec }) {
   return (
     <div>
-      <button onClick={send(increment(step))}>+</button>
+      <button onClick={inc}>+</button>
       <h2>{n}</h2>
-      <button onClick={send(increment(-step))}>-</button>
+      <button onClick={dec}>-</button>
     </div>
   );
 }
 
-export default connect(state => state)(Counter);
+export default connect(
+  state => state,
+  (dispatch, props) => ({
+    inc: () => dispatch(increment(props.step)),
+    dec: () => dispatch(increment(-props.step))
+  })
+)(Counter);
