@@ -2,6 +2,7 @@ import React from "react";
 import { withLayout } from "./Layout";
 import { AppIntro } from "./styles";
 import Greeting from "./Greeting";
+import Counter from "./Counter";
 
 export function Home({ updateMessage }) {
   return (
@@ -10,7 +11,7 @@ export function Home({ updateMessage }) {
         To get started, edit <code>src/App.js</code> and save to reload.
       </AppIntro>
       <Greeting />
-      <button onClick={() => updateMessage("foo")}>Click me!</button>
+      <Counter step={3} />
     </React.Fragment>
   );
 }
