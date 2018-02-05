@@ -8,11 +8,6 @@ import Jokes from "./Jokes";
 export function Home({ updateMessage }) {
   return (
     <React.Fragment>
-      <AppIntro>
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </AppIntro>
-      <Greeting />
-      <Counter step={3} />
       <Jokes />
     </React.Fragment>
   );
