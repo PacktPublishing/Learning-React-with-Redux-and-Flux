@@ -1,21 +1,5 @@
-import { createStore, applyMiddleware } from "redux";
-
-const initialState = {
-  n: 0
-};
-
-function inc(state, action) {
-  return { ...state, n: state.n + action.n };
-}
-
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case "INCREMENT":
-      return inc(state, action);
-    default:
-      return state;
-  }
-}
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import { reducer as counter } from "./ducks/counter";
 
 const logger = store => next => action => {
   console.log("dispatching", action);
@@ -32,5 +16,7 @@ const async = store => next => action => {
 
   return next(action);
 };
+
+const reducer = combineReducers({ counter });
 
 export default createStore(reducer, applyMiddleware(async, logger));

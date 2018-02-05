@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { increment } from "./actions";
+import { actions } from "./ducks/counter";
 
 export function Counter({ n, inc, dec }) {
   return (
@@ -13,9 +13,9 @@ export function Counter({ n, inc, dec }) {
 }
 
 export default connect(
-  state => state,
+  state => state.counter,
   (dispatch, props) => ({
-    inc: () => dispatch(increment(props.step)),
-    dec: () => dispatch(increment(-props.step))
+    inc: () => dispatch(actions.increment(props.step)),
+    dec: () => dispatch(actions.increment(-props.step))
   })
 )(Counter);

@@ -3,6 +3,7 @@ import { withLayout } from "./Layout";
 import { AppIntro } from "./styles";
 import Greeting from "./Greeting";
 import Counter from "./Counter";
+import Jokes from "./Jokes";
 
 export function Home({ updateMessage }) {
   return (
@@ -12,6 +13,7 @@ export function Home({ updateMessage }) {
       </AppIntro>
       <Greeting />
       <Counter step={3} />
+      <Jokes />
     </React.Fragment>
   );
 }
