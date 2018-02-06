@@ -28,3 +28,22 @@ export const AppLogo = styled.img`
   animation: ${spin} infinite 20s linear;
   height: 80px;
 `;
+
+const calculateWidth = ({ width = 100 }) => `${width}%`;
+
+export const Button = styled.button.attrs({
+  type: ({ type = "button" }) => type
+})`
+  width: ${calculateWidth};
+  background-color: forestgreen;
+  color: white;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: lightgray;
+  }
+`;

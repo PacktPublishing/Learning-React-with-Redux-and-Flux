@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actions } from "./ducks/jokes";
 import styled from "styled-components";
+import Filters from "./Filters";
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 const JokeList = styled.div`
   padding: 2rem;
@@ -26,20 +32,33 @@ const Joke = styled.div`
 
 export class Jokes extends Component {
   componentDidMount() {
-    this.props.search();
+    const { limit, page, search } = this.props;
+
+    search("", page, limit);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { limit, page, search } = nextProps;
+
+    if (page !== this.props.page) {
+      search("", page, limit);
+    }
   }
 
   render() {
     const { results } = this.props;
 
     return (
-      <JokeList>
-        {results.map(j => (
-          <Joke key={j.id}>
-            {j.joke}
-          </Joke>
-        ))}
-      </JokeList>
+      <Content>
+        <JokeList>
+          {results.map(j => (
+            <Joke key={j.id}>
+              {j.joke}
+            </Joke>
+          ))}
+        </JokeList>
+        <Filters />
+      </Content>
     );
   }
 }
