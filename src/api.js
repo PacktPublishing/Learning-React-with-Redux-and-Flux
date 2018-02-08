@@ -14,3 +14,7 @@ export function search({ term = "", page = 1, limit = 10 }) {
 export function fetch(id) {
   return api.get(`/j/${id}`);
 }
+
+export function random() {
+  return api.get("/");
+}

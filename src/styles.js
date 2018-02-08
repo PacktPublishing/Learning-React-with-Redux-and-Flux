@@ -1,5 +1,15 @@
 import styled, { keyframes } from "styled-components";
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Content = Container.extend`
+  width: 70%;
+`;
+
 export const App = styled.div`
   text-align: center;
 `;

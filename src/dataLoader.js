@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function dataLoader(propName, loader) {
+export default function dataLoader(propName, loader, mutators = {}) {
   return Component =>
     class extends React.Component {
       state = {
@@ -17,6 +17,18 @@ export default function dataLoader(propName, loader) {
         this.reload();
       }
 
+      send = mutator => (...args) => {
+        const f = mutators[mutator];
+
+        if (!f) {
+          this.setState(null);
+        } else {
+          this.setState({ data: f(this.state.data)(...args) });
+        }
+      };
+
+      revert = () => this.setState(state => ({ data: state.initial }));
+
       render() {
         const { data } = this.state;
 
@@ -26,7 +38,14 @@ export default function dataLoader(propName, loader) {
 
         const props = { ...this.props, [propName]: data };
 
-        return <Component {...props} reload={this.reload} />;
+        return (
+          <Component
+            {...props}
+            reload={this.reload}
+            send={this.send}
+            revert={this.revert}
+          />
+        );
       }
     };
 }
