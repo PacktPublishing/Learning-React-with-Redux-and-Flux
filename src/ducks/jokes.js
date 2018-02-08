@@ -4,8 +4,19 @@ const initialState = {
   page: 1,
   limit: 10,
   totalPages: 1,
+  filters: { term: "" },
   results: []
 };
+
+function setFilter(state, action) {
+  return {
+    ...state,
+    filters: {
+      ...state.filters,
+      [action.filter]: action.value
+    }
+  };
+}
 
 function nextPage(state) {
   return {
@@ -34,6 +45,7 @@ function received(state, action) {
 const RECEIVED = "jokes/RECEIVED";
 const NEXT_PAGE = "jokes/NEXT_PAGE";
 const PREVIOUS_PAGE = "jokes/PREVIOUS_PAGE";
+const SET_FILTER = "jokes/SET_FILTER";
 
 export function reducer(state = initialState, action) {
   switch (action.type) {
@@ -43,12 +55,15 @@ export function reducer(state = initialState, action) {
       return nextPage(state);
     case PREVIOUS_PAGE:
       return previousPage(state);
+    case SET_FILTER:
+      return setFilter(state, action);
     default:
       return state;
   }
 }
 
 export const actions = {
+  setFilter: (filter, value) => ({ type: SET_FILTER, filter, value }),
   next: () => ({ type: NEXT_PAGE }),
   previous: () => ({ type: PREVIOUS_PAGE }),
   search: (term, page, limit) => dispatch =>

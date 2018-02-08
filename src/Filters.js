@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { actions } from "./ducks/jokes";
 import { Button } from "./styles";
+import Search from "./Search";
 
 const Container = styled.div`
   width: 50%;
@@ -23,6 +24,7 @@ export function Filters({ page, totalPages, next, previous }) {
   return (
     <Container>
       <Content>
+        <Search />
         <Button width={10} disabled={page === 1} onClick={previous}>
           &lt;
         </Button>

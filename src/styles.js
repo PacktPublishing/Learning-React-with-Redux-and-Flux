@@ -47,3 +47,24 @@ export const Button = styled.button.attrs({
     background-color: lightgray;
   }
 `;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Input = styled.input`
+  font-size: 2rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  border-color: darkgray;
+  width: ${calculateWidth};
+`;
+
+export const Row = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+  width: ${calculateWidth};
+`;

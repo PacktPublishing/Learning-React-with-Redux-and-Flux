@@ -32,16 +32,16 @@ const Joke = styled.div`
 
 export class Jokes extends Component {
   componentDidMount() {
-    const { limit, page, search } = this.props;
+    const { limit, page, search, filters: { term } } = this.props;
 
-    search("", page, limit);
+    search(term, page, limit);
   }
 
   componentWillReceiveProps(nextProps) {
-    const { limit, page, search } = nextProps;
+    const { limit, page, search, filters: { term } } = nextProps;
 
-    if (page !== this.props.page) {
-      search("", page, limit);
+    if (page !== this.props.page || term !== this.props.filters.term) {
+      search(term, page, limit);
     }
   }
 
