@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { actions } from "./ducks/jokes";
 import styled from "styled-components";
 import Filters from "./Filters";
+
+const JokeLink = ({ id, ...props }) => <Link to={`/jokes/${id}`} {...props} />;
 
 const Content = styled.div`
   display: flex;
@@ -16,7 +19,9 @@ const JokeList = styled.div`
   height: 100%;
 `;
 
-const Joke = styled.div`
+const Joke = styled(JokeLink)`
+  text-decoration: none;
+  color: black;
   display: flex;
   align-items: center;
   text-align: left;
@@ -52,7 +57,7 @@ export class Jokes extends Component {
       <Content>
         <JokeList>
           {results.map(j => (
-            <Joke key={j.id}>
+            <Joke key={j.id} id={j.id}>
               {j.joke}
             </Joke>
           ))}

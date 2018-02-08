@@ -1,15 +1,27 @@
 import React from "react";
+import { Router, Route } from "react-router-dom";
+import createHistory from "history/createBrowserHistory";
 import { withLayout } from "./Layout";
 import { AppIntro } from "./styles";
 import Greeting from "./Greeting";
 import Counter from "./Counter";
 import Jokes from "./Jokes";
+import Joke from "./Joke";
+
+const history = createHistory();
+
+history.listen((location, action) => {
+  console.log(location, action);
+});
 
 export function Home({ updateMessage }) {
   return (
-    <React.Fragment>
-      <Jokes />
-    </React.Fragment>
+    <Router history={history}>
+      <React.Fragment>
+        <Route exact path="/" component={Jokes} />
+        <Route exact path="/jokes/:id" component={Joke} />
+      </React.Fragment>
+    </Router>
   );
 }
 
