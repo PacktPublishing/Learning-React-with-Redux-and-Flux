@@ -7,6 +7,7 @@ import Greeting from "./Greeting";
 import Counter from "./Counter";
 import Jokes from "./Jokes";
 import Joke from "./Joke";
+import SignUp from "./SignUp";
 
 const history = createHistory();
 
@@ -19,6 +20,7 @@ export function Home({ updateMessage }) {
     <Router history={history}>
       <React.Fragment>
         <Route exact path="/" component={Jokes} />
+        <Route exact path="/signup" component={SignUp} />
         <Route exact path="/jokes/:id" component={Joke} />
       </React.Fragment>
     </Router>
