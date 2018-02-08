@@ -10,3 +10,7 @@ const api = axios.create({
 export function search({ term = "", page = 1, limit = 10 }) {
   return api.get("/search", { params: { term, page, limit } });
 }
+
+export function fetch(id) {
+  return api.get(`/j/${id}`);
+}
