@@ -13,14 +13,12 @@ You’ll begin by exploring the basics of React to get a sense of how rendering,
 <H2>What You Will Learn</H2>
 <DIV class=book-info-will-learn-text>
 <UL>
-<LI> The basics of the webpack bundling system
-<LI> Creating a React app with webpack
-<LI> Building isomorphic React apps with Redux
-<LI> Building a node express API
-<LI> Secure API authentication
-<LI> Maintaining a session on the client
-<LI> Redux datatables and forms with validation
-<LI> Reusable Redux code
+<LI> React basics - component rendering and state management
+<LI> Build a FLUX implementation from scratch
+<LI> Managing lists in Redux
+<LI> Grasp the React-Router and Redux-Form basics
+<LI> Minimizing FLUX usage
+<LI> Develop an app thatis unique, fun, and responsive
 </LI></UL></DIV>
 
 ## Instructions and Navigation
