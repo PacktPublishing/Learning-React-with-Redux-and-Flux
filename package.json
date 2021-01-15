@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "email-validator": "^1.1.1",
     "final-form": "^4.2.0",
     "prop-types": "^15.6.0",
